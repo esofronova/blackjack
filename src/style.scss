@@ -1,0 +1,61 @@
+$cardHeight: 150px;
+
+.blackjack {
+  background-image: linear-gradient(rgb(40, 114, 40), rgb(0, 58, 0));
+
+  .cards { 
+    height: $cardHeight;
+    position: relative;
+  }
+
+  .card {
+    width: 110px;
+    height: $cardHeight;
+    font-size: 1.5em;
+    box-shadow: 0 0.5rem 1rem #222 !important;
+    cursor: pointer;
+    background-color: white;
+    padding: .4rem;
+    position: absolute;
+
+    .card-front {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+    }
+
+    .card-back {
+      $bgcolor: seashell;
+      $color: transparentize(crimson, 0.5);
+      $transparent: rgba(0, 0, 0, 0);
+      background: linear-gradient($transparent 60%, $color 60%), linear-gradient(90deg, $transparent 60%, $color 60%);
+      background-size: 0.1em 0.1em;
+      background-color: $bgcolor;
+      background-position: center;
+      font: 20px/2 "Trebuchet MS", Verdana, sans-serif;
+      border-radius: .25rem;
+      width: 100%;
+      height: 100%;
+      border: 1px solid red;
+    }
+
+    &:hover { margin-top: -0.5rem; }
+
+    .icon { font-size: 2.5em; }
+  }
+
+  .btns > .btn { box-shadow: 0 0.1rem 0.2rem #222 !important; }
+
+  .chip { 
+    box-shadow: 0 0.2rem 0.1rem #222 !important;
+    width: 50px; 
+    height: 50px; 
+  }
+
+  .overlay {
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+  }
+}
