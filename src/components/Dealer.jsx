@@ -1,18 +1,17 @@
 import { useState } from "react";
-import { dealerCards, setDealerCards, dealerPoints, setDealerPoints, dCards } from "../App";
+import { dealerCards, dealerPoints } from "../App";
 
 export let cardsHidden, setCardsHidden;
 
 export default function Dealer() {
 
-  let dCards = -50;
-
   [cardsHidden, setCardsHidden] = useState(true);
+  let dCards = -50;
 
   return (
     <>
       <div className="mb-5">
-        <h5 className="text-white text-center mb-3">{`Dealer: ${dealerPoints}`}</h5>
+        <h5 className="text-white text-center mb-3">{`Dealer: ${cardsHidden ? (dealerCards.length > 0 ? dealerCards[0].value : 0) : dealerPoints}`}</h5>
         <div className="d-flex">
           <div className="card me-3 position-static col-3">
             <div className="card-back"></div>
@@ -23,7 +22,7 @@ export default function Dealer() {
               return (
                 <div
                   key={index}
-                  className={"card " + (card.color === 'red' ? 'text-danger' : 'text-dark')}
+                  className={"card " + (card !== undefined ? (card.color === 'red' ? 'text-danger' : 'text-dark') : "")}
                   style={{ left: dCards + "px" }}
                 >
                   {index === 0 || !cardsHidden ?

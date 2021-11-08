@@ -1,20 +1,20 @@
-import { yourCards, setYourCards, yourPoints, setYourPoints } from "../App";
+import { userCards, userPoints } from "../App";
 
-export default function Player() {
+export default function User() {
 
-  let yCards = -50;
+  let uCards = -50;
 
   return (
     <>
-      <h5 className="text-white text-center mb-3">{`You: ${yourPoints}`}</h5>
+      <h5 className="text-white text-center mb-3">{`You: ${userPoints}`}</h5>
       <div className="d-flex cards">
-        {yourCards.map((card, index) => {
-          yCards += 50;
+        {userCards.map((card, index) => {
+          uCards += 50;
           return (
             <div
               key={index}
-              className={"card " + (card.color === 'red' ? 'text-danger' : 'text-dark')}
-              style={{ left: yCards + "px" }}
+              className={"card " + (card !== undefined ? (card.color === 'red' ? 'text-danger' : 'text-dark') : "")}
+              style={{ left: uCards + "px" }}
             >
               <div className="card-front">
                 <div className="align-self-start">{card.name.length > 1 ? card.name.slice(0, 1) : card.name}</div>

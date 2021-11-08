@@ -1,7 +1,7 @@
 import { chips } from '../data';
 import { bet, setBet, balance, setBalance, gameStarted, setGameStarted } from '../App';
 
-export default function Leftbar() {
+export default function Bet() {
 
   return (
     <>
