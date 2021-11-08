@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Leftbar from './components/Leftbar';
 import Dealer from './components/Dealer';
 import Player from './components/Player';
-import Rightbar from './components/Rightbar';
-// import GameOver from './components/Rightbar';
+import Buttons from './components/Buttons';
+import GameOver from './components/GameOver';
 import { Container, Row, Col } from 'react-bootstrap';
 
 // TODO
@@ -16,10 +16,11 @@ import { Container, Row, Col } from 'react-bootstrap';
 // - dealer points
 
 export let
-  bet, setBet, balance, setBalance, gameStarted, setGameStarted,
-  dealerCards, setDealerCards, dealerPoints, setDealerPoints, dCards,
-  yourCards, setYourCards, yourPoints, setYourPoints, yCards
-;
+  bet, setBet, balance, setBalance, 
+  gameStarted, setGameStarted,gameOver, setGameOver, winner, setWinner,
+  dealerCards, setDealerCards, dealerPoints, setDealerPoints,
+  yourCards, setYourCards, yourPoints, setYourPoints
+  ;
 
 export const getRandom = () => {
   let rand = Math.floor(Math.random() * (cards.length + 1));
@@ -39,7 +40,9 @@ export const addCard = player => {
     } else if (player === 'dealer') {
       dealerCards.push(cards[card]);
       setDealerCards([...dealerCards]);
-      setDealerPoints(dealerCards[0].value);
+      // setDealerPoints(dealerCards[0].value);
+      setDealerPoints(countPoints(dealerCards));
+
       // cards.splice(cards.indexOf(cards[dealerCard]), 1);
     };
   };
@@ -60,8 +63,8 @@ export default function Blackjack() {
   document.title = "Blackjack";
 
   [gameStarted, setGameStarted] = useState(false);
-  let [gameOver, setGameOver] = useState(false);
-  let [winner, setWinner] = useState(null);
+  [gameOver, setGameOver] = useState(false);
+  [winner, setWinner] = useState(null);
 
   [dealerCards, setDealerCards] = useState([]);
   [yourCards, setYourCards] = useState([]);
@@ -69,43 +72,36 @@ export default function Blackjack() {
   [dealerPoints, setDealerPoints] = useState(0);
   [yourPoints, setYourPoints] = useState(0);
 
-  setTimeout(() => {
-    if (yourPoints === 21 || dealerPoints > 21) {
-      setGameOver(true);
-      setWinner("Congratulations! You're lucky today! :)");
-    } else if (dealerPoints === 21 || yourPoints > 21) {
-      setGameOver(true);
-      setWinner("Dealer is the winner! Maybe next time!..")
-    };
-  }, 200);
+  console.log(dealerPoints);
+
+  // setTimeout(() => {
+  //   if (yourPoints === 21 || dealerPoints > 21) {
+  //     setGameOver(true);
+  //     setWinner("Congratulations! You're lucky today! :)");
+  //   } else if (dealerPoints === 21 || yourPoints > 21) {
+  //     setGameOver(true);
+  //     setWinner("Dealer is the winner! Maybe next time!..")
+  //   };
+  // }, 200);
 
   [balance, setBalance] = useState(500);
   [bet, setBet] = useState(0);
 
-  yCards = -50;
-  dCards = -50;
-
   return (
-    <>
-      <div className="blackjack py-5 h-100">
-        <Container fluid className="h-100">
-          <Row className="d-flex text-white text-center h-100">
-            <Col xs={4}>
-              <Leftbar />
-            </Col>
-            <Col xs={4}>
-              <Row>
-                <Dealer />
-                <Player />
-              </Row>
-            </Col>
-            <Col xs={4}>
-              <Rightbar />
-            </Col>
-            {/* <GameOver /> */}
-          </Row>
-        </Container>
-      </div>
-    </>
+    <div className="blackjack py-5 h-100">
+      <Container fluid className="h-100">
+        <Row className="d-flex text-white text-center h-100">
+          <Col xs={4} lg={4}><Leftbar /></Col>
+          <Col xs={4} lg={4}>
+            <Row>
+              <Col xs={12}><Dealer /></Col>
+              <Col xs={12}><Player /></Col>
+            </Row>
+          </Col>
+          <Col xs={4} lg={4}><Buttons /></Col>
+          <GameOver />
+        </Row>
+      </Container>
+    </div>
   );
 };

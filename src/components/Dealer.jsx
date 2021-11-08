@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { dealerCards, setDealerCards, dealerPoints, setDealerPoints, dCards } from "../App";
 
+export let cardsHidden, setCardsHidden;
+
 export default function Dealer() {
+
+  let dCards = -50;
+
+  [cardsHidden, setCardsHidden] = useState(true);
 
   return (
     <>
@@ -19,7 +26,7 @@ export default function Dealer() {
                   className={"card " + (card.color === 'red' ? 'text-danger' : 'text-dark')}
                   style={{ left: dCards + "px" }}
                 >
-                  {index === 0 ?
+                  {index === 0 || !cardsHidden ?
                     <div className="card-front">
                       <div className="align-self-start">{card.name.length > 1 ? card.name.slice(0, 1) : card.name}</div>
                       <div className="align-self-center icon">{card.icon}</div>

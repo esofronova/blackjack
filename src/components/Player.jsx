@@ -1,6 +1,8 @@
-import { yourCards, setYourCards, yourPoints, setYourPoints, yCards } from "../App";
+import { yourCards, setYourCards, yourPoints, setYourPoints } from "../App";
 
 export default function Player() {
+
+  let yCards = -50;
 
   return (
     <>
