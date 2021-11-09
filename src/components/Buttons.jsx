@@ -6,13 +6,14 @@ export default function Buttons() {
 
   return (
     <>
-      <div className="mt-5 btns d-flex flex-column">
+      <div className="btns h-100 centered">
         {buttons.map((btn, index) => {
           return (
             <button
               key={index}
               disabled={btn === 'deal' && bet >= 25 ? false : gameStarted ? false : true}
               className={"btn w-100 mb-3 text-uppercase btn-" + (btn === 'deal' ? 'primary' : btn === 'hit' ? 'success' : 'danger') + (` btn-${btn}`)}
+              style={{ maxWidth: "300px" }}
               onClick={() => {
                 if (btn === 'deal') {
                   addCard('dealer');

@@ -96,17 +96,17 @@ export default function Blackjack() {
   }, 200);
 
   return (
-    <div className="blackjack py-5 h-100">
-      <Container fluid className="h-100">
-        <Row className="d-flex text-white text-center h-100">
-          <Col xs={4} lg={4}><Bet /></Col>
-          <Col xs={4} lg={4}>
+    <div className="blackjack py-3 py-lg-5 h-100 overflow-auto">
+      <Container className="h-100">
+        <Row className="text-white text-center h-100">
+          <Col xs={12} lg={4} className="mb-5 mb-lg-0"><Bet /></Col>
+          <Col xs={12} lg={6} className="mb-5 mb-lg-0">
             <Row>
               <Col xs={12}><Dealer /></Col>
               <Col xs={12}><User /></Col>
             </Row>
           </Col>
-          <Col xs={4} lg={4}><Buttons /></Col>
+          <Col xs={12} lg={2}><Buttons /></Col>
           { gameOver ? <GameOver /> : null }
         </Row>
       </Container>
