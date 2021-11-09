@@ -41,26 +41,11 @@ colors.forEach((color) => {
   });
 });
 
-// console.log(cards);
-
-// function groupBy(data, val) {
-//   let group = [];
-//   data.forEach((item) => {
-//     if (!group[item[val]]) {
-//       group[item[val]] = [];
-//     }
-//     group[item[val]].push(item);
-//   });
-//   console.log(group);
-// };
-
-// groupBy(cards, ['suit']);
-
 export const buttons = ['deal', 'hit', 'stand'];
 export const chips = [5, 25, 50, 100];
 
 export const rules = [
-  "Cards 6-9 are worth face value. Jacks are worth 2, Queens - 3, Kings - 4, and Aces are worth 11.",
+  "Cards 6-9 are worth face value. Jacks are worth 2, Queens - 3, Kings - 4 and Aces are worth 11.",
   "The Player is dealt 2 cards.",
   "The Dealer is dealt 2 cards, one face down.",
   "Player may 'hit' to receive another card.",
