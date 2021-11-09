@@ -102,9 +102,9 @@ export default function Blackjack() {
   }, 200);
 
   return (
-    <div className="blackjack py-3 py-lg-5 h-100 overflow-auto">
+    <div className="blackjack py-3 py-lg-5 h-100">
       <Container className="h-100">
-        <Row className="text-white text-center h-100">
+        <Row className="text-white text-center h-100" style={{ overflowY: "auto", overflowX: "hidden" }}>
           <Col xs={12} lg={4} className="mb-5 mb-lg-0"><Bet /></Col>
           <Col xs={12} lg={6} className="mb-5 mb-lg-0">
             <Row>
