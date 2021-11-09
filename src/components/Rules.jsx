@@ -9,7 +9,7 @@ export default function Rules() {
     <div className="rules">
       <button className="btn position-fixed rules text-white fs-5" onClick={() => setShowRules(true)}>Rules</button>
       <div className={"position-fixed overlay blured centered w-100 h-100 pointer " + (!showRules ? "d-none" : "")} onClick={() => setShowRules(false)}>
-        <h4 className="mb-4">It's a Russian version of Blackjack</h4>
+        <h3 className="mb-4">It's a Russian version of Blackjack</h3>
         <ul>
           {rules.map((rule, index) => {
             return (

@@ -36,7 +36,6 @@ export default function Buttons() {
                       clearInterval(interval);
                     };
                   }, 1000);
-
                   setCardsHidden(false);
                 };
               }}
