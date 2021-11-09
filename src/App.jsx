@@ -84,7 +84,7 @@ export default function Blackjack() {
   [dealerPoints, setDealerPoints] = useState(0);
   [userPoints, setUserPoints] = useState(0);
 
-  let checkWinner = setTimeout(() => {
+  setTimeout(() => {
     if ((userPoints === 21 || dealerPoints > 21) || (dealerPoints >= 17 && dealerPoints < 21 && userPoints > dealerPoints))  {
       setGameOver(true);
       setWinner('User');
