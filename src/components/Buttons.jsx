@@ -1,4 +1,4 @@
-import { bet, gameStarted, setGameStarted, addCard } from '../App';
+import { bet, gameStarted, setGameStarted, addCard, dealerPoints } from '../App';
 import { buttons } from '../data';
 import { setCardsHidden } from './Dealer';
 
@@ -28,7 +28,15 @@ export default function Buttons() {
                 };
                 if (btn === 'stand') {
                   document.querySelector('.btn-hit').setAttribute("disabled", true);
-                  addCard('dealer');
+                  document.querySelector('.btn-stand').setAttribute("disabled", true);
+
+                  let interval = setInterval(() => {
+                    addCard('dealer');
+                    if (dealerPoints >= 17) {
+                      clearInterval(interval);
+                    };
+                  }, 1000);
+
                   setCardsHidden(false);
                 };
               }}

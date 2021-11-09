@@ -11,9 +11,10 @@ export default function User() {
         {userCards.map((card, index) => {
           uCards += 50;
           return (
+            card !== undefined ?
             <div
               key={index}
-              className={"card " + (card !== undefined ? (card.color === 'red' ? 'text-danger' : 'text-dark') : "")}
+              className={"card " + (card.color === 'red' ? 'text-danger' : 'text-dark')}
               style={{ left: uCards + "px" }}
             >
               <div className="card-front">
@@ -22,6 +23,7 @@ export default function User() {
                 <div className="align-self-end">{card.name.length > 1 ? card.name.slice(0, 1) : card.name}</div>
               </div>
             </div>
+            : null
           );
         })}
       </div>

@@ -2,7 +2,7 @@ import { cards } from './data';
 import './style.scss';
 import { useState } from 'react';
 import Bet from './components/Bet';
-import Dealer from './components/Dealer';
+import Dealer, { setCardsHidden } from './components/Dealer';
 import User from './components/User';
 import Buttons from './components/Buttons';
 import GameOver from './components/GameOver';
@@ -10,7 +10,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 // TODO
 // - splice cards from array
-// responsiveness
 
 export let
   bet, setBet, balance, setBalance, 
@@ -53,10 +52,11 @@ export const addCard = player => {
 };
 
 export const startNewGame = () => {
-  if (winner === 'User') {
-    setBalance(balance + (bet * 2));
+  if (winner === 'User') { 
+    setBalance(balance + (bet * 2)); 
+  } else if (winner === 'None') {
+    setBalance(balance + bet);
   };
-  
   setGameOver(false);
   setBet(0);
   setDealerPoints(0);
@@ -64,6 +64,7 @@ export const startNewGame = () => {
   setDealerCards([]);
   setUserCards([]);
   setGameStarted(false);
+  setCardsHidden(true);
 };
 
 export default function Blackjack() {
@@ -83,15 +84,19 @@ export default function Blackjack() {
   [dealerPoints, setDealerPoints] = useState(0);
   [userPoints, setUserPoints] = useState(0);
 
-  setTimeout(() => {
-    if (userPoints === 21 || dealerPoints > 21) {
+  let checkWinner = setTimeout(() => {
+    if ((userPoints === 21 || dealerPoints > 21) || (dealerPoints >= 17 && dealerPoints < 21 && userPoints > dealerPoints))  {
       setGameOver(true);
       setWinner('User');
       setWinnerText("Congratulations! You're lucky today! :)");
-    } else if (dealerPoints === 21 || userPoints > 21) {
+    } else if ((dealerPoints === 21 || userPoints > 21) || (dealerPoints >= 17 && dealerPoints < 21 && userPoints < dealerPoints)) {
       setGameOver(true);
       setWinner('Dealer');
       setWinnerText("Dealer is the winner! Maybe next time!..")
+    } else if (userPoints > 17 && dealerPoints > 17 && userPoints === dealerPoints) {
+      setGameOver(true);
+      setWinner('None');
+      setWinnerText("Tie! ;)");
     };
   }, 200);
 

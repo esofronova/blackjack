@@ -20,9 +20,10 @@ export default function Dealer() {
             {dealerCards.map((card, index) => {
               dCards += 50;
               return (
+                card !== undefined ?
                 <div
                   key={index}
-                  className={"card " + (card !== undefined ? (card.color === 'red' ? 'text-danger' : 'text-dark') : "")}
+                  className={"card " + (card.color === 'red' ? 'text-danger' : 'text-dark')}
                   style={{ left: dCards + "px" }}
                 >
                   {index === 0 || !cardsHidden ?
@@ -35,6 +36,7 @@ export default function Dealer() {
                     <div className="card-back"></div>
                   }
                 </div>
+                : null
               );
             })}
           </div>
