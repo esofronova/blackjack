@@ -7,6 +7,7 @@ import User from './components/User';
 import Buttons from './components/Buttons';
 import GameOver from './components/GameOver';
 import { Container, Row, Col } from 'react-bootstrap';
+import Rules from './components/Rules';
 
 // TODO
 // - splice cards from array
@@ -113,6 +114,7 @@ export default function Blackjack() {
           </Col>
           <Col xs={12} lg={2}><Buttons /></Col>
           { gameOver ? <GameOver /> : null }
+          <Rules />
         </Row>
       </Container>
     </div>
